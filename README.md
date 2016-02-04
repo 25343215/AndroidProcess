@@ -1,5 +1,11 @@
 # AndroidProcess
 
+
+此项目 Fork 自 [AndroidProcess by wenmingvs](https://github.com/wenmingvs/AndroidProcess/blob/master/README.md),
+我为其添加了“第六种方法”，其他并无区别。
+以下为原介绍：
+
+-----
 提供一个判断App是否处于前台的工具类,拥有多达5种判断方法,最后一种方法堪称Android黑科技（并非我原创）,既可以突破Android5.0以上的权限封锁,获取任意前台App的包名,又不需要权限
 
 AndroidProcess App, require Android 4.0+, GPL v3 License  
@@ -165,6 +171,9 @@ if (ProcessManager.isMyProcessInTheForeground()) {
 ``` java
 List<ActivityManager.RunningAppProcessInfo> processes = ProcessManager.getRunningAppProcessInfo(ctx);
 ```
+
+方法六：通过 Android 辅助功能(Accessibility Service) 检测任意前台界面
+详情参阅：
 
 Gradle 构建
 ------

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.wenming.andriodprocess.R;
 import com.wenming.androidprocess.Features;
 import com.wenming.androidprocess.service.MyService;
+import com.wenming.library.AccessibilityUtil;
 import com.wenming.library.BackgroundUtil;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class OneFragment extends Fragment {
     private Context mContext;
     private View mView;
 
-    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6;
     private ArrayList<String> reminderlist;
 
     @Override
@@ -78,6 +80,8 @@ public class OneFragment extends Fragment {
         checkBox3 = (CheckBox) mView.findViewById(R.id.checkbox3);
         checkBox4 = (CheckBox) mView.findViewById(R.id.checkbox4);
         checkBox5 = (CheckBox) mView.findViewById(R.id.checkbox5);
+        checkBox6 = (CheckBox) mView.findViewById(R.id.checkbox6);
+
         checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -144,6 +148,23 @@ public class OneFragment extends Fragment {
             }
         });
 
+        checkBox6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true) {
+                    if (!AccessibilityUtil.isAccessibilitySettingsOn(getContext())) {
+                        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                        startActivity(intent);
+                    }
+
+                    startService();
+                    deselectAll();
+                    checkBox6.setChecked(true);
+                    Features.BGK_METHOD = BackgroundUtil.BKGMETHOD_VIA_DETECTION_SERVICE;
+
+                }
+            }
+        });
 
     }
 
@@ -167,6 +188,7 @@ public class OneFragment extends Fragment {
         checkBox3.setChecked(false);
         checkBox4.setChecked(false);
         checkBox5.setChecked(false);
+        checkBox6.setChecked(false);
     }
 
 }

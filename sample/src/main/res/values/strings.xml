@@ -13,5 +13,8 @@
     <string name="reminder4">方法4：\n通过使用UsageStatsManager获取，此方法是Android5.0之后提供的新API，可以获取一个时间段内的应用统计信息\n\n\n注意：\n1. 务必提供在AndroidManifest中加入对应的权限\n2. 打开手机设置，点击安全-高级，在有权查看使用情况的应用中，为这个App打上勾</string>
     <string name="reminder5">方法5：\nLinux系统内核会把Process进程信息保存在/proc目录下,通过遍历进程的属性信息来判断位于前台的任一应用</string>
 
+    <string name="content6">使用辅助功能探测当前窗口变化</string>
+
+    <string name="detection_service_des">此服务用来帮助检测本应用当前是否处于前台</string>
 
 </resources>

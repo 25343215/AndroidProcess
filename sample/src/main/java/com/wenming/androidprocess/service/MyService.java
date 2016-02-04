@@ -89,6 +89,7 @@ public class MyService extends Service {
         mContentList.add("通过ActivityLifecycleCallbacks判断");
         mContentList.add("通过UsageStatsManager判断");
         mContentList.add("通过LinuxCoreInfo判断");
+        mContentList.add(getString(R.string.content6));
     }
 
     private boolean getAppStatus() {
