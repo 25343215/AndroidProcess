@@ -32,6 +32,7 @@ public class BackgroundUtil {
     public static final int BKGMETHOD_GETAPPLICATION_VALUE = 2;
     public static final int BKGMETHOD_GETUSAGESTATS = 3;
     public static final int BKGMETHOD_GETLINUXPROCESS = 4;
+    public static final int BKGMETHOD_VIA_DETECTION_SERVICE = 5;
 
 
     /**
@@ -53,6 +54,8 @@ public class BackgroundUtil {
                 return queryUsageStats(context, packageName);
             case BKGMETHOD_GETLINUXPROCESS:
                 return getLinuxCoreInfo(context, packageName);
+            case BKGMETHOD_VIA_DETECTION_SERVICE:
+                return isForegroundPkgViaDectectService(packageName);
             default:
                 return false;
         }
@@ -183,6 +186,15 @@ public class BackgroundUtil {
         return false;
 
 
+    }
+
+    /**
+     * 方法6：使用 Android AccessibilityService 探测窗口变化，跟据系统回传的参数获取 前台对象 的包名与类名
+     *
+     * @param packageName 需要检查是否位于栈顶的App的包名
+     */
+    public static boolean isForegroundPkgViaDectectService(String packageName) {
+        return packageName.equals(DetectionService.foregroundPackageName);
     }
 
 }
