@@ -173,7 +173,9 @@ List<ActivityManager.RunningAppProcessInfo> processes = ProcessManager.getRunnin
 ```
 
 方法六：通过 Android 辅助功能(Accessibility Service) 检测任意前台界面
-详情参阅：
+----
+详情参阅：[通过 ANDROID 辅助功能「ACCESSIBILITY SERVICE」 检测任意前台界面](http://effmx.com/articles/tong-guo-android-fu-zhu-gong-neng-accessibility-servicejian-ce-ren-yi-qian-tai-jie-mian/)
+
 
 Gradle 构建
 ------
